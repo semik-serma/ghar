@@ -4,10 +4,13 @@ import { FaYoutube } from "react-icons/fa";
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaLinkedin } from "react-icons/fa";
-
+import Searchbar from "./SearchBar";
 import React, { useEffect, useState } from 'react'
 import DateTime from "./DateTime";
 import { useDateTime } from "@/hooks/useDateTime";
+import { Flag } from "lucide-react";
+import Button from "./Button";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
 
@@ -26,15 +29,32 @@ const Navbar = () => {
   } = useDateTime();
 
     
+   const [searchtogoogle,setsearchtogoogle]=useState('') 
+  
+   const handlechange=(event)=>{
+    setsearchtogoogle(event.target.value)
+    console.log(event.target.value)
+   }
+   const handlesearch=(event)=>{
+    event.preventDefault()
+   
+  
     
+    // window.location.href=`https://www.google.com/search?q=${searchtogoogle}`
+        // window.location.href=`https://www.facebook.com/=${searchtogoogle}`
+            window.open(`https://www.google.com/search?q=${searchtogoogle}`)
+
+
+   }
 
   return (
-    <div>
-        <div>
+    <div className="flex flex-col items-center ">
+        <div className="flex justify-between bg-slate-100 w-screen items-center px-20">
             <div>
-              <Image src='https://images.unsplash.com/photo-1620288627223-53302f4e8c74?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'width={40} height={40} alt='Tiger gang'></Image>
+              <Image src='https://tse3.mm.bing.net/th/id/OIP.q6hexFxcdJnqy_OJPTRLTgHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3'width={70} height={70} alt='Tiger gang' className="rounded-full"
+              ></Image>
             </div>
-            <div>
+            <div className="flex gap-4">
         
       
         <Link href="/">Home</Link>
@@ -43,20 +63,40 @@ const Navbar = () => {
       
     
             </div>
-            <div>
+            <div className="">
               <Link href='/login'>Login</Link>
             </div>
-            <div>
-            <Link href='https://www.facebook.com/'><FaFacebook /></Link>
-            <Link href='https://www.youtube.com/@digitalmediacenterphidim6022'> <FaYoutube  /></Link>
-            <Link href='https://www.linkedin.com/feed/'><FaLinkedin /></Link>
+            <div className="flex gap-4">
+            <Link href='https://www.facebook.com/'><FaFacebook  className="text-2xl text-blue-600"/></Link>
+            <Link href='https://www.youtube.com/@digitalmediacenterphidim6022'> <FaYoutube className="text-2xl text-red-500" /></Link>
+            <Link href='https://www.linkedin.com/feed/'><FaLinkedin className="text-2xl text-blue-400" /></Link>
             </div>
-          <div>
+          <div className="text-[20px]">
             {/* <DateTime/> */}
             {bsDate}
           </div>
         </div>
-      <div></div>
+        <div className="flex justify-between px-20 w-screen items-center">
+      <div className="">
+       <Image
+  src="https://flagcdn.com/np.svg"
+  width={30}
+  height={40}
+  alt="Nepal"/>
+      </div>
+      <div className="flex">
+
+  <Searchbar value={searchtogoogle} onChange={handlechange} />
+  {/* <Button onClick={handlesearch} /> */}
+  <button type='submit' onClick={handlesearch} className="border-2 border-black p-2 rounded-full w-40 bg-slate-950 text-blue-600">
+    Search
+  </button>
+
+</div>
+      <div>
+        <Link href='/calculator'>Calculator</Link>
+      </div>
+    </div>
     </div>
   )
 }
