@@ -6,10 +6,24 @@ import Link from 'next/link'
 import { FaLinkedin } from "react-icons/fa";
 
 import React, { useEffect, useState } from 'react'
+import DateTime from "./DateTime";
+import { useDateTime } from "@/hooks/useDateTime";
 
 const Navbar = () => {
-  const [date,setdate]=useState('')
-  
+
+  const {
+    englishDate,        // "Monday, January 15, 2024"
+    englishTime,        // "10:30:45 AM"
+    englishDateTime,    // "Monday, January 15, 2024, 10:30:45 AM"
+    nepaliDate,        // "सोमवार, १५ जनवरी, २०२४"
+    nepaliTime,        // "१०:३०:४५ अपराह्न"
+    nepaliDateTime,     // Full Nepali date and time
+    bsDate,            // "२०८० पौष २"
+    bsYear,            // "२०८०"
+    bsMonth,           // "पौष"
+    bsDay,             // "२"
+    rawDate            // JavaScript Date object
+  } = useDateTime();
 
     
     
@@ -38,7 +52,8 @@ const Navbar = () => {
             <Link href='https://www.linkedin.com/feed/'><FaLinkedin /></Link>
             </div>
           <div>
-            
+            {/* <DateTime/> */}
+            {bsDate}
           </div>
         </div>
       <div></div>
