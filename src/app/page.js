@@ -18,7 +18,7 @@ export default function Page() {
       {/* FIXED FULLSCREEN BACKGROUND */}
       <div className="fixed inset-0 z-0">
         <Image
-          src={backgroundImage}
+          src='/mybackground.jpg'
           alt="Cyberpunk coding workspace background"
           fill
           priority
@@ -44,14 +44,8 @@ export default function Page() {
               <Newbutton />
             </div>
 
-            <div className="flex justify-center w-90 h-150">
-              <Image
-                src="/picture.png"
-                width={400}
-                height={400}
-                alt="Semik - Professional Web Developer"
-                className="rounded-full border-8 border-white shadow-2xl"
-              />
+            <div className="flex justify-center m-10">
+            <Image src='/new3..png' alt="myphoto"  width={200} height={200} className="mt-20  rounded-full "></Image>
             </div>
           </div>
         </div>
