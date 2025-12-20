@@ -5,13 +5,18 @@ import { Marker } from 'react-leaflet'
 import { Popup } from 'react-leaflet'
 const page = () => {
     const [location,setlocation]=useState(null)
-    navigator.geolocation.getCurrentPosition(((position)=>{
-        setlocation({
-            latitude:position.coords.latitude,
-            longitude:position.coords.longitude,
-            accuracy:position.coords
-        })
-    }))
+
+
+      useEffect(()=>{
+        navigator.geolocation.getCurrentPosition(((position)=>{
+          setlocation({
+              latitude:position.coords.latitude,
+              longitude:position.coords.longitude,
+              accuracy:position.coords
+          })
+      }))
+      },[])
+  
     useEffect(()=>{
       console.log(location)
     },[location])
